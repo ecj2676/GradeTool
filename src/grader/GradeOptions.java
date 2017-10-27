@@ -81,8 +81,7 @@ public class GradeOptions
 	
 	/**
 	 * SourceRoot describes the path where student files are available. It 
-	 * can be a set of files downloaded from Moodle or a set of projects
-	 * cloned from git, e.g. using Bannus's getRepos.py script. Specify /sourceRoot
+	 * should be a set of files downloaded from Moodle. Specify /sourceRoot
 	 * at the command line or as the path attribute to a SourceRoot element
 	 * in an input XML file.
 	 *  
@@ -91,13 +90,10 @@ public class GradeOptions
 	public String getSourceRoot() { return sourceRoot; }
 	
 	/**
-	 * SourceType describes what kind of structure to expect at SourceRoot. It 
-	 * defaults to moodle but can also be phabricator. 'moodle' indicates a 
-	 * flat structure where student names are included in file names. 
-	 * 'phabricator' indicates a cloned directory structure from git where 
-	 * the first level of directories is projects. Specified as /sourceType on
-	 * the command line or as a sourceType attribute to the SourceRoot element
-	 * in the input XML file.
+	 * SourceType describes what kind of structure to expect at SourceRoot. 'moodle' 
+	 * indicates a flat structure where student names are included in file names. 
+	 * Specified as /sourceType on the command line or as a sourceType attribute 
+	 * to the SourceRoot element in the input XML file.
 	 * 
 	 * @return a value indicating the structure of the files at source root
 	 */
@@ -144,8 +140,8 @@ public class GradeOptions
 
 	/** 
 	 * Get a list of patterns we can use to filter source files when copying from
-	 * moodle or phabricator. Only files that match at least one pattern will be
-	 * included in the generated Eclipse packages.
+	 * moodle. Only files that match at least one pattern will be included in 
+	 * the generated Eclipse packages.
 	 * 
 	 * @return the list of filters to apply
 	 */
