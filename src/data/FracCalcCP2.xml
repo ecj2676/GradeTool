@@ -1,5 +1,5 @@
 <GradingRun>
-	<SourceRoot>c:\temp\fc2</SourceRoot>
+	<SourceRoot path="c:\temp\fc2"/>
 	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
 	<ExtraFiles>
 		<File>c:\temp\FractionalCalculatorTests.java</File>
