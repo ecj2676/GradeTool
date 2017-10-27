@@ -3,7 +3,7 @@
 -->
 
 <GradingRun>
-	<SourceRoot type="phabricator" path="c:\apcs\repos" copyToEclipse="true">
+	<SourceRoot type="moodle" path="c:\apcs\repos" copyToEclipse="true">
 		<Filters>
 			<Filter pattern="binarysearch.*java"/>
 		</Filters>
