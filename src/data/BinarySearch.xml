@@ -1,0 +1,38 @@
+<!--
+	This GradingRun describes how to set up Eclipse to grade Binary Search
+-->
+
+<GradingRun>
+	<SourceRoot type="phabricator" path="c:\apcs\repos" copyToEclipse="true">
+		<Filters>
+			<Filter pattern="binarysearch.*java"/>
+		</Filters>
+	</SourceRoot>
+	
+	<EclipseProjectRoot clear="true">c:\users\eric\workspace\submissions</EclipseProjectRoot>
+	
+	<ExtraFiles>
+		<File>c:\users\eric\workspace\Labs\src\binarysearch\BinaryTest.java</File>
+	</ExtraFiles>
+	
+	<Updates>
+		<Replace
+			name="make binarySearch public"
+			pattern="private static int binarySearch"
+			replacement="public static int binarySearch"
+			fileFilter="Search"/>
+		<Replace
+			name="rename BinarySearch to BinarySearchTester"
+			pattern="class BinarySearch\s+"
+			replacement="class BinarySearchTester "
+			fileFilter="BinarySearch\.java"/>
+		<Rename
+			name="rename BinarySearch to BinarySearchTester"
+			oldName="BinarySearch.java"
+			newName="BinarySearchTester.java"
+			overwriteExisting="false"/>
+	</Updates>
+	
+	<Commands>
+	</Commands>
+</GradingRun>

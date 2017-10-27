@@ -1,0 +1,9 @@
+<GradingRun>
+	<SourceRoot>c:\temp\fc1</SourceRoot>
+	<EclipseProjectRoot clear="true">
+		c:\users\eric\onedrive\workspace\submissions
+	</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>c:\users\eric\onedrive\workspace\FractionalCalculator\src\fracCalc4\FractionalCalculatorTests.java</File>
+	</ExtraFiles>
+</GradingRun>

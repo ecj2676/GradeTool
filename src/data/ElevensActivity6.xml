@@ -1,0 +1,24 @@
+<!--
+	This GradingRun describes how to set up Eclipse to grade Elevens Activity 5.
+-->
+
+<GradingRun>
+	<SourceRoot type="phabricator" path="c:\apcs\repos" copyToEclipse="true">
+		<Filters>
+			<Filter pattern="activity6.*java"/>
+		</Filters>
+	</SourceRoot>
+	
+	<EclipseProjectRoot clear="true">c:\users\eric\workspace\submissions</EclipseProjectRoot>
+	
+	<ExtraFiles>
+	</ExtraFiles>
+	
+	<Updates>
+		<Replace 
+			name="remove bad imports" 
+			pattern="import activity[^;]+;" 
+			replacement=""/>
+	</Updates>
+
+</GradingRun>

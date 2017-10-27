@@ -1,0 +1,117 @@
+<!--
+	This GradingRun describes how to set up Eclipse to grade Elevens Activity 2.
+	
+	We need to run...
+		1. student unit tests with code coverage (will run manually for now)
+		2. student unit tests on official deck
+		3. student unit tests on broken deck
+		4. official unit tests on student deck
+-->
+
+<GradingRun>
+	<SourceRoot type="phabricator" path="c:\apcs\repos" copyToEclipse="true">
+		<Filters>
+			<Filter pattern="elevens.*java"/>
+			<Filter pattern="activity2\\.*java"/>
+		</Filters>
+	</SourceRoot>
+	
+	<EclipseProjectRoot clear="true">c:\users\eric\workspace\submissions</EclipseProjectRoot>
+	
+	<ExtraFiles>
+		<File>c:\users\eric\onedrive\workspace\Elevens\src\activity2\DeckOfficialTests.java</File>
+		<File>c:\users\eric\onedrive\workspace\Elevens\src\activity2\BrokenDeck.java</File>
+		<File rename="BrokenDeckStudentUnitTests.java">{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\CardUnitTests.java</File>
+		<File rename="OfficialDeckStudentUnitTests.java">{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\CardUnitTests.java</File>
+		<File rename="BrokenDeckStudentUnitTests.java">{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\DeckUnitTests.java</File>
+		<File rename="OfficialDeckStudentUnitTests.java">{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\DeckUnitTests.java</File>
+		<File rename="OfficialDeck.java">c:\users\eric\onedrive\workspace\Elevens\src\Activity2\Deck.java</File>
+	</ExtraFiles>
+	
+	<Updates>
+		<!--Rename
+			name="rename CardUnitTests to DeckUnitTests for students that didn't separate them"
+			oldName="CardUnitTests.java"
+			newName="DeckUnitTests.java"
+			overwriteExisting="false"/ -->
+		<Replace
+			name="rename CardUnitTests to DeckUnitTests"
+			pattern="CardUnitTests"
+			replacement="DeckUnitTests"
+			fileFilter="OfficialDeckStudentUnitTests"/>
+		<Replace
+			name="rename CardUnitTests to DeckUnitTests"
+			pattern="CardUnitTests"
+			replacement="DeckUnitTests"
+			fileFilter="BrokenDeckStudentUnitTests"/>
+			
+		<Replace 
+			name="update copy of student tests to run on broken deck (class rename)" 
+			pattern="DeckUnitTests" 
+			replacement="DeckStudentUnitTests" 
+			fileFilter="BrokenDeckStudentUnitTests"/>
+		<Replace 
+			name="update copy of student tests to run on broken deck (broken deck rename)" 
+			pattern="Deck" 
+			replacement="BrokenDeck" 
+			fileFilter="BrokenDeckStudentUnitTests"/>
+			
+		<Replace 
+			name="update copy of student tests to run on official deck" 
+			pattern="class DeckUnitTests" 
+			replacement="class DeckStudentUnitTests" 
+			fileFilter="OfficialDeckStudentUnitTests"/>
+		<Replace 
+			name="update copy of student tests to run on official deck" 
+			pattern="Deck" 
+			replacement="OfficialDeck" 
+			fileFilter="OfficialDeck"/>
+			
+		<Replace 
+			name="remove bad imports" 
+			pattern="import activity1.Card;" 
+			replacement=""/>
+	</Updates>
+	
+	<Commands>
+		<!-- compile student code -->
+		<Command>
+			<Executable>C:\Program Files\Java\jdk1.8.0_45\bin\javac.exe</Executable>
+			<Arguments>-cp \apps\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;c:\apps\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;c:\users\eric\workspace\testhelp.jar -d {ECLIPSE_PROJECT_ROOT}\bin\{PACKAGE} *.java</Arguments> 
+			<WorkingDirectory>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}</WorkingDirectory>
+			<Output>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\OutputFromCompile.txt</Output>
+		</Command>
+		
+		<!-- run official unit tests against student deck -->
+		<Command>
+			<Executable>java</Executable>
+			<Arguments>-cp \apps\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;c:\apps\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;c:\users\eric\workspace\testhelp.jar;. org.junit.runner.JUnitCore {PACKAGE}.DeckOfficialTests</Arguments>
+			<Output>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\OutputFromOfficialTests.txt</Output>
+			<WorkingDirectory>{ECLIPSE_PROJECT_ROOT}\bin</WorkingDirectory>
+		</Command>
+		
+		<!-- run student unit tests against student deck -->
+		<Command>
+			<Executable>java</Executable>
+			<Arguments>-cp \apps\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;c:\apps\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;c:\users\eric\workspace\testhelp.jar;. org.junit.runner.JUnitCore {PACKAGE}.DeckUnitTests</Arguments>
+			<Output>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\OutputFromStudentDeckTests.txt</Output>
+			<WorkingDirectory>{ECLIPSE_PROJECT_ROOT}\bin</WorkingDirectory>
+		</Command>
+		
+		<!-- run student unit tests against broken deck -->
+		<Command>
+			<Executable>java</Executable>
+			<Arguments>-cp \apps\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;c:\apps\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;c:\users\eric\workspace\testhelp.jar;. org.junit.runner.JUnitCore {PACKAGE}.BrokenDeckStudentUnitTests</Arguments>
+			<Output>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\OutputFromBrokenDeck.txt</Output>
+			<WorkingDirectory>{ECLIPSE_PROJECT_ROOT}\bin</WorkingDirectory>
+		</Command>
+		
+		<!-- run student unit tests against official deck -->
+		<Command>
+			<Executable>java</Executable>
+			<Arguments>-cp \apps\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;c:\apps\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;c:\users\eric\workspace\testhelp.jar;. org.junit.runner.JUnitCore {PACKAGE}.OfficialDeckStudentUnitTests</Arguments>
+			<Output>{ECLIPSE_PROJECT_ROOT}\src\{PACKAGE}\OutputFromOfficialDeck.txt</Output>
+			<WorkingDirectory>{ECLIPSE_PROJECT_ROOT}\bin</WorkingDirectory>
+		</Command>
+	</Commands>
+</GradingRun>
