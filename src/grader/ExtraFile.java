@@ -1,5 +1,7 @@
 package grader;
 
+import java.io.File;
+
 /* 
  * ExtraFile is a utility class to encapsulate an ExtraFile element
  * from the input options. It is basically just a path to a file, but
@@ -20,5 +22,5 @@ public class ExtraFile
 	public String getPath() { return this.path; }
 	public String getNewName() { return this.newName; }
 	public void setNewName(String newName) { this.newName = newName; }
-	public String getName() { return path.substring(path.lastIndexOf('\\') + 1); }
+	public String getName() { return path.substring(path.lastIndexOf(File.separatorChar) + 1); }
 }
