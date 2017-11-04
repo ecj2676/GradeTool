@@ -43,7 +43,7 @@ public class PackageManager
 	{
 		for (String packageName : packages)
 		{
-			File packageDir = new File(options.getEclipseProjectRoot() + "\\src\\" + packageName);
+			File packageDir = new File(options.getEclipseProjectRoot() + File.separatorChar + "src" + File.separatorChar + packageName);
 			for (File f : packageDir.listFiles())
 			{
 				if (!update.isApplicable(f.getAbsolutePath()))
@@ -72,7 +72,15 @@ public class PackageManager
 		if (!root.isDirectory())
 			throw new IllegalArgumentException("Source root must be a non-empty directory ('" + options.getSourceRoot() + "' is invalid)");
 
-		File[] files = root.listFiles();
+		File[] files = root.listFiles(new FilenameFilter() {
+
+			@Override
+			public boolean accept(File dir, String name)
+			{
+				return name.endsWith(".java");
+			}
+
+			});
 		if (files.length == 0)
 			throw new IllegalArgumentException("Source root must be a non-empty directory ('" + options.getSourceRoot() + "' is invalid)");
 
@@ -84,7 +92,7 @@ public class PackageManager
 
 			packages.add(packageName);
 			
-			File packageDir = new File(options.getEclipseProjectRoot() + "\\src\\" + packageName);
+			File packageDir = new File(options.getEclipseProjectRoot() + File.separatorChar + "src" + File.separatorChar + packageName);
 			if (!packageDir.exists())
 				packageDir.mkdir();
 			
@@ -104,7 +112,7 @@ public class PackageManager
 		if (!options.shouldClearTargetProject())
 			return;
 		
-		File src = new File(options.getEclipseProjectRoot() + "\\src");
+		File src = new File(options.getEclipseProjectRoot() + File.separatorChar + "src");
 		deletePath(src);
 		src.mkdir();
 	}
