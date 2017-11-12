@@ -76,8 +76,15 @@ public class RowOfBoxesUnitTests
 		verify.that(response).matches(makeBoxRegex(4, 0));
 	}
 	
+	@Test
+	public void usesCapitalONotZero()
+	{
+		String response = ConsoleTester.getOutput("rowOfBoxes.RowOfBoxes", "1\r\n1\r\n0\r\n");
+		verify.that(response).matches("O\\=O[\\s\\r\\n\\|]+O\\=O");
+	}
+	
 	private String makeBoxRegex(int numBoxes, int boxSize)
 	{
-		return String.format("(O\\={%2$d}){%1$d}O[\\s\\r\\n]+(\\| {%2$d}){%1$d}\\|[\\s\\r\\n]+(O\\={%2$d}){%1$d}O", numBoxes, boxSize);
+		return String.format("((O|0)\\={%2$d}){%1$d}(O|0)[\\s\\r\\n]+(\\| {%2$d}){%1$d}\\|[\\s\\r\\n]+((O|0)\\={%2$d}){%1$d}(O|0)", numBoxes, boxSize);
 	}
 }
