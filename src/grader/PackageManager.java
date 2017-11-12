@@ -112,7 +112,7 @@ public class PackageManager
 		if (!options.shouldClearTargetProject())
 			return;
 		
-		File src = new File(options.getEclipseProjectRoot() + "\\src");
+		File src = new File(options.getEclipseProjectRoot() + File.separatorChar + "src");
 		deletePath(src);
 		src.mkdir();
 	}
