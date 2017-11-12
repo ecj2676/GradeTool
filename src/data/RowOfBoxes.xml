@@ -1,0 +1,7 @@
+<GradingRun>
+	<SourceRoot path="c:\temp\rob"/>
+	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>E:\ejewart_workspace\Sandbox\src\rowOfBoxes\RowOfBoxesUnitTests.java</File>
+	</ExtraFiles>
+</GradingRun>
