@@ -1,0 +1,8 @@
+<!-- for mac paths -->
+<GradingRun>
+	<SourceRoot path="/Users/doug/Desktop/temp/te1"/>
+	<EclipseProjectRoot clear="true">/Users/doug/Documents/eclipse-workspace/Submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>/Users/doug/Desktop/temp/TextExcelTests.java</File>
+	</ExtraFiles>
+</GradingRun>
