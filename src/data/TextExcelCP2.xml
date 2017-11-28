@@ -1,0 +1,10 @@
+<GradingRun>
+	<SourceRoot path="c:\temp\te2"/>
+	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>E:\ejewart_workspace\GradeTool\src\unitTests\TextExcelCP2Tests.java</File>
+	</ExtraFiles>
+	<Updates>
+		<Replace name="MoveTestsToPackage" pattern="textExcel2" replacement="{PACKAGE}" fileFilter="TextExcelCP2Tests.java"/>
+	</Updates>
+</GradingRun>
