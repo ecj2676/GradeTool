@@ -1,0 +1,12 @@
+<GradingRun>
+	<SourceRoot path="c:\temp\elevens1"/>
+	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>E:\ejewart_workspace\Sandbox\src\elevensActivity1\OfficialCardTests.java</File>
+		<File>E:\ejewart_workspace\Sandbox\src\elevensActivity1\BrokenCard.java</File>
+		<File rename="BrokenCardTests.java">e:\ejewart_workspace\submissions\src\{PACKAGE}\CardTests.java</File>
+	</ExtraFiles>
+	<Updates>
+		<Replace name="ChangeTestsToBrokenCard" pattern="Card" replacement="BrokenCard" fileFilter="BrokenCardTests.java"/>
+	</Updates>
+</GradingRun>

@@ -1,0 +1,10 @@
+<GradingRun>
+	<SourceRoot path="c:\temp\twos2"/>
+	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File rename="OfficialTwosTests.java">E:\ejewart_workspace\Sandbox\src\twos2\Twos2Tests.java</File>
+	</ExtraFiles>
+	<Updates>
+		<Replace name="ChangeTestsToOfficial" pattern="Twos2Tests" replacement="OfficialTwosTests" fileFilter="OfficialTwosTests.java"/>
+	</Updates>
+</GradingRun>

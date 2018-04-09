@@ -1,4 +1,10 @@
 <GradingRun>
 	<SourceRoot path="c:\temp\bs"/>
 	<EclipseProjectRoot clear="true">e:\ejewart_workspace\submissions</EclipseProjectRoot>
+	<ExtraFiles>
+		<File>E:\ejewart_workspace\Sandbox\src\boxedStrings\BoxedStringUnitTests.java</File>
+	</ExtraFiles>
+	<Updates>
+		<Replace name="InsertPackageName" pattern="STUDENT_PACKAGE_NAME" replacement="{PACKAGE}"/>
+	</Updates>
 </GradingRun>
