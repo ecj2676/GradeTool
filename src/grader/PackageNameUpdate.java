@@ -9,7 +9,7 @@ public class PackageNameUpdate extends ReplaceInFile
 {
 	public PackageNameUpdate()
 	{
-		super("package rename", "(\\A|\\n)package\\s+([^;]+);", 2, "package {PACKAGE};", "\\.java");
+		super("package rename", "(\\A|\\n)(package\\s+)([^;]+);", "{1}{2}{PACKAGE};", "\\.java");
 	}
 	
 	@Override

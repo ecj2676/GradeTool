@@ -212,7 +212,6 @@ public class GradeOptions
 				Update u = new ReplaceInFile(
 						e.getAttribute("name"),
 						e.getAttribute("pattern"), 
-						e.hasAttribute("group") ? Integer.parseInt(e.getAttribute("group")) : 0,
 						e.getAttribute("replacement"), 
 						e.getAttribute("fileFilter"));
 				updates.add(u);

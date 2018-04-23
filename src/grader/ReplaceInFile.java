@@ -11,15 +11,13 @@ public class ReplaceInFile extends Update
 {
 	private String name;
 	private Pattern pattern;
-	private int group;
 	private String replacement;
 	private String fileFilter;
 	
-	public ReplaceInFile(String name, String pattern, int group, String replacement, String fileFilter)
+	public ReplaceInFile(String name, String pattern, String replacement, String fileFilter)
 	{
 		this.name = name;
 		this.pattern = Pattern.compile(pattern);
-		this.group = group;
 		this.replacement = replacement;
 		this.fileFilter = fileFilter;
 	}
@@ -50,7 +48,23 @@ public class ReplaceInFile extends Update
 	protected String replaceText(String packageName, String fileContents) 
 	{
 		Matcher matcher = this.pattern.matcher(fileContents);
-		return matcher.replaceAll(this.replacement.replace("{PACKAGE}", packageName));
+		String updatedReplacement = this.replacement.replace("{PACKAGE}", packageName);
+		if (matcher.find())
+		{
+			// allow users to grab chunks of the matching text and use them in the replacement
+			// by specifying syntax like {n} where n is the group number
+			for (int g = 0; g < matcher.groupCount(); g++)
+			{
+				String search = "{" + g + "}";
+				if (updatedReplacement.contains(search))
+				{
+					String r = matcher.group(g);
+					updatedReplacement = updatedReplacement.replace(search, r);
+				}
+			}
+		}
+		
+		return matcher.replaceAll(updatedReplacement);
 	}
 
 }
