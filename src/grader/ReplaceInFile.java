@@ -50,13 +50,7 @@ public class ReplaceInFile extends Update
 	protected String replaceText(String packageName, String fileContents) 
 	{
 		Matcher matcher = this.pattern.matcher(fileContents);
-		if (matcher.find())
-		{
-			String oldValue = matcher.group(this.group);
-			return fileContents.replace(oldValue, this.replacement.replace("{PACKAGE}", packageName));
-		}
-		
-		return fileContents;
+		return matcher.replaceAll(this.replacement.replace("{PACKAGE}", packageName));
 	}
 
 }
